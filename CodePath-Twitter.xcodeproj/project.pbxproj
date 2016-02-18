@@ -76,6 +76,7 @@
 				5CAD9BFB7B17690DE908B3FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		D7FE2FFE1C73FD6F008DF488 /* Products */ = {
 			isa = PBXGroup;
@@ -342,7 +343,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bryancai.CodePath-Twitter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CodePath-Twitter/CodePath-Twitter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -357,7 +357,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bryancai.CodePath-Twitter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CodePath-Twitter/CodePath-Twitter-Bridging-Header.h";
 			};
 			name = Release;
 		};
