@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4F9DDE3000A252022CD7F4EA /* Pods_CodePath_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F8027F6A8BF193CD678D45 /* Pods_CodePath_Twitter.framework */; };
+		D733F7E01C75C12C00B23BFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D733F7DF1C75C12C00B23BFB /* User.swift */; };
+		D733F7E31C75C14F00B23BFB /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D733F7E21C75C14F00B23BFB /* Tweet.swift */; };
+		D75543391C76CACC00C7E22F /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75543381C76CACC00C7E22F /* TweetsViewController.swift */; };
 		D7C4F1C31C7407A700F674C7 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4F1C21C7407A700F674C7 /* TwitterClient.swift */; };
 		D7FE30011C73FD6F008DF488 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FE30001C73FD6F008DF488 /* AppDelegate.swift */; };
 		D7FE30031C73FD6F008DF488 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FE30021C73FD6F008DF488 /* ViewController.swift */; };
@@ -20,10 +23,13 @@
 		1EEFAAC3337507C41F33A985 /* Pods-CodePath-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodePath-Twitter/Pods-CodePath-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		25DFACF00C102C622F4FD0C6 /* Pods-CodePath-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodePath-Twitter/Pods-CodePath-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 		32F8027F6A8BF193CD678D45 /* Pods_CodePath_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodePath_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7C4F1C21C7407A700F674C7 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		D733F7DF1C75C12C00B23BFB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D733F7E21C75C14F00B23BFB /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		D75543381C76CACC00C7E22F /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		D7C4F1C21C7407A700F674C7 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		D7FE2FFD1C73FD6F008DF488 /* CodePath-Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodePath-Twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7FE30001C73FD6F008DF488 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D7FE30021C73FD6F008DF488 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D7FE30001C73FD6F008DF488 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		D7FE30021C73FD6F008DF488 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		D7FE30051C73FD6F008DF488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D7FE30071C73FD6F008DF488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7FE300A1C73FD6F008DF488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +65,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D733F7DE1C75C10E00B23BFB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D733F7DF1C75C12C00B23BFB /* User.swift */,
+				D733F7E21C75C14F00B23BFB /* Tweet.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D75543371C769EA100C7E22F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D7FE30021C73FD6F008DF488 /* ViewController.swift */,
+				D75543381C76CACC00C7E22F /* TweetsViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D7C4F1C11C74076A00F674C7 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,9 +113,10 @@
 		D7FE2FFF1C73FD6F008DF488 /* CodePath-Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				D75543371C769EA100C7E22F /* View Controllers */,
+				D733F7DE1C75C10E00B23BFB /* Models */,
 				D7C4F1C11C74076A00F674C7 /* API */,
 				D7FE30001C73FD6F008DF488 /* AppDelegate.swift */,
-				D7FE30021C73FD6F008DF488 /* ViewController.swift */,
 				D7FE30041C73FD6F008DF488 /* Main.storyboard */,
 				D7FE30071C73FD6F008DF488 /* Assets.xcassets */,
 				D7FE30091C73FD6F008DF488 /* LaunchScreen.storyboard */,
@@ -222,6 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D733F7E01C75C12C00B23BFB /* User.swift in Sources */,
+				D733F7E31C75C14F00B23BFB /* Tweet.swift in Sources */,
+				D75543391C76CACC00C7E22F /* TweetsViewController.swift in Sources */,
 				D7FE30031C73FD6F008DF488 /* ViewController.swift in Sources */,
 				D7C4F1C31C7407A700F674C7 /* TwitterClient.swift in Sources */,
 				D7FE30011C73FD6F008DF488 /* AppDelegate.swift in Sources */,
