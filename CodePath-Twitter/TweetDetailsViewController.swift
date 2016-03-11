@@ -39,6 +39,12 @@ class TweetDetailsViewController: UIViewController {
 		retweetImageView.image = UIImage(named: "retweet-action")
 		favoriteImageView.image = UIImage(named: "like-action")
 		replyImageView.image = UIImage(named: "reply-action_0")
+		
+		let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+//		tapGestureRecognizer.cancelsTouchesInView = true
+//		tapGestureRecognizer.delegate = self
+		replyImageView.userInteractionEnabled = true
+		replyImageView.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -46,13 +52,15 @@ class TweetDetailsViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	func imageTapped(img: AnyObject) {
-		self.performSegueWithIdentifier("pushToCompose", sender: self)
+	func imageTapped(sender: UITapGestureRecognizer) {
+		self.performSegueWithIdentifier("pushToReply", sender: sender)
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		if segue.identifier == "pushToCompose" {
-			
+		if segue.identifier == "pushToReply" {
+			let composeViewController = segue.destinationViewController as! ComposeViewController
+			composeViewController.user = tweet.user
+			composeViewController.isThisAReply = true
 		}
 	}
 	

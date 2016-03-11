@@ -1,3 +1,4 @@
+
 //
 //  ComposeViewController.swift
 //  CodePath-Twitter
@@ -7,12 +8,34 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 class ComposeViewController: UIViewController {
 
-    override func viewDidLoad() {
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var screenNameLabel: UILabel!
+	@IBOutlet weak var profileImageView: UIImageView!
+	@IBOutlet weak var tweetTextField: UITextField!
+	@IBOutlet weak var tweetButton: UIButton!
+	
+	var user: User!
+	var isThisAReply: Bool!
+	var replyID: Int!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-
+		
+		nameLabel.text = user?.name
+		screenNameLabel.text = user?.screenname
+		profileImageView.setImageWithURL((user?.profileImageUrl)!)
+		
+		if isThisAReply == true {
+			tweetButton.setTitle("Reply", forState: .Normal)
+		}
+		else {
+			tweetButton.setTitle("Tweet", forState: .Normal)
+		}
+		
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +44,12 @@ class ComposeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+	@IBAction func tweetButtonPressed(sender: AnyObject) {
+		
+		
+	}
+	
+
 
     /*
     // MARK: - Navigation

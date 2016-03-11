@@ -69,7 +69,6 @@ class TwitterClient: BDBOAuth1SessionManager {
 	}
 	
 	func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
-
 		
 		GET("1.1/statuses/home_timeline.json", parameters: nil,progress: nil, success: {(operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
 			// print("home timeline: \(response)")
@@ -77,12 +76,7 @@ class TwitterClient: BDBOAuth1SessionManager {
 			let dictionaries = response as! [NSDictionary]
 			let tweets = Tweet.tweetsWithArray(dictionaries)
 			
-//			for tweet in tweets {
-//				print("\(tweet.text!)")
-//			}
-			
 			success(tweets)
-
 			
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
 				failure(error)
@@ -97,12 +91,28 @@ class TwitterClient: BDBOAuth1SessionManager {
 			
 			success(user)
 			
-//			print("user: \(user.name)")
-			
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
 				failure(error)
 		})
 	}
+	
+//	func composeTweet(success: () -> (), failure: (NSError) -> ()) {
+//		
+//		
+//		POST(<#T##URLString: String##String#>, parameters: <#T##AnyObject?#>, progress: <#T##((NSProgress) -> Void)?##((NSProgress) -> Void)?##(NSProgress) -> Void#>, success: <#T##((NSURLSessionDataTask, AnyObject?) -> Void)?##((NSURLSessionDataTask, AnyObject?) -> Void)?##(NSURLSessionDataTask, AnyObject?) -> Void#>, failure: <#T##((NSURLSessionDataTask?, NSError) -> Void)?##((NSURLSessionDataTask?, NSError) -> Void)?##(NSURLSessionDataTask?, NSError) -> Void#>)
+//		
+//		POST("1.1/statuses/update.json", parameters: nil,progress: nil, success: {(operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+//			
+//			let dictionaries = response as! [NSDictionary]
+//			let tweets = Tweet.tweetsWithArray(dictionaries)}
+//			
+//			success()
+//			
+//			
+//			}, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+//				failure(error)
+//		})
+//	}
 	
 	func logout() {
 		User.currentUser = nil

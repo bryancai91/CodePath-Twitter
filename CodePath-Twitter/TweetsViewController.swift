@@ -9,12 +9,13 @@
 import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
-
+	
 	var tweets: [Tweet]!
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var composeButton: UIButton!
 	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -25,19 +26,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 		TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) -> () in
 			self.tweets = tweets
 			self.tableView.reloadData()
-
-//			for tweet in tweets {
-//				print(tweet.text)
-//			}
+			
 			}, failure: { (error: NSError) -> () in
 				print(error.localizedDescription)
-			})
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+		})
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if tweets != nil {
@@ -68,17 +66,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 	@IBAction func onLogout(sender: AnyObject) {
 		TwitterClient.sharedInstance.logout()
 	}
-
 	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	/*
+	// MARK: - Navigation
+	
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	// Get the new view controller using segue.destinationViewController.
+	// Pass the selected object to the new view controller.
+	}
+	*/
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "pushToProfile" {
@@ -88,6 +86,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 			
 			let profileViewController = segue.destinationViewController as! ProfileViewController
 			profileViewController.user = user
+		}
+		else if segue.identifier == "pushToCompose" {
+			let composeViewController = segue.destinationViewController as! ComposeViewController
+			composeViewController.user = User.currentUser
+			composeViewController.isThisAReply = false
 		}
 		else {
 			let cell = sender as! UITableViewCell
@@ -105,5 +108,5 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 		// Get the new view controller using segue.destinationViewController.
 		// Pass the selected object to the new view controller.
 	}
-
+	
 }
