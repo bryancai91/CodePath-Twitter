@@ -29,7 +29,6 @@ class ViewController: UIViewController {
 		// where should this go?
 		client.requestSerializer.removeAccessToken()
 		client.login({ () -> () in
-//			print("I've logged in")
 			self.performSegueWithIdentifier("loginSegue", sender: nil)
 			}) { (error: NSError) -> () in
 				print("Error:\(error.localizedDescription)")

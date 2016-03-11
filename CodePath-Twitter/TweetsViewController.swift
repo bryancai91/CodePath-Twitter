@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
 
 	var tweets: [Tweet]!
 	@IBOutlet weak var tableView: UITableView!
@@ -51,7 +51,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
 		cell.tweet = tweets[indexPath.row]
+		
+		let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+		tapGestureRecognizer.cancelsTouchesInView = true
+		tapGestureRecognizer.delegate = self
+		cell.tweetImageView.userInteractionEnabled = true
+		cell.tweetImageView.addGestureRecognizer(tapGestureRecognizer)
+		
 		return cell
+	}
+	
+	func imageTapped(sender: UITapGestureRecognizer) {
+		self.performSegueWithIdentifier("pushToProfile", sender: sender)
 	}
 	
 	@IBAction func onLogout(sender: AnyObject) {
@@ -68,5 +79,31 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "pushToProfile" {
+			let cell = (sender as! UITapGestureRecognizer).view?.superview?.superview as? TweetCell
+			let indexPath = tableView.indexPathForCell(cell!)
+			let user = (tweets![indexPath!.row]).user
+			
+			let profileViewController = segue.destinationViewController as! ProfileViewController
+			profileViewController.user = user
+		}
+		else {
+			let cell = sender as! UITableViewCell
+			let indexPath = tableView.indexPathForCell(cell)
+			let tweet = tweets![indexPath!.row]
+			
+			let tweetDetailsViewController = segue.destinationViewController as! TweetDetailsViewController
+			
+			tweetDetailsViewController.tweet = tweet
+		}
+		
+		
+		
+		
+		// Get the new view controller using segue.destinationViewController.
+		// Pass the selected object to the new view controller.
+	}
 
 }
